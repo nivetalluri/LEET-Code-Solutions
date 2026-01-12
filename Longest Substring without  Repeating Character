@@ -1,0 +1,12 @@
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        length=len(s)
+        char_map={}
+        max_len=0
+        left=0
+        for i in range(length):
+            if s[i] in char_map and char_map[s[i]]>=left:
+                left=char_map[s[i]]+1
+            char_map[s[i]]=i    
+            max_len=max(max_len,i-left+1)
+        return max_len
